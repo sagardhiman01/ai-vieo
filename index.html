@@ -28,38 +28,8 @@
             background-color: var(--bg); 
             color: var(--text-dark); 
             font-family: var(--sans); 
-            cursor: none; /* Hide default cursor for custom one */
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-        }
-
-        /* ---------------- CUSTOM CURSOR ---------------- */
-        .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-        }
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
-        }
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--accent);
-            transition: width 0.3s, height 0.3s, background-color 0.3s;
-        }
-        /* Hover state for cursor */
-        .hovering .cursor-outline {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(230, 195, 92, 0.2);
-            border-color: transparent;
         }
 
         /* ---------------- NAVIGATION ---------------- */
@@ -462,9 +432,7 @@
 </head>
 <body>
 
-    <!-- CUSTOM CURSOR -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+
 
     <!-- NAVIGATION -->
     <nav class="nav-bar">
@@ -586,7 +554,6 @@
             <a href="#" class="hover-target">Instagram</a>
             <a href="#" class="hover-target">LinkedIn</a>
             <a href="#" class="hover-target">Twitter</a>
-            <a href="admin.html" class="hover-target" style="color: var(--accent);">Admin Panel</a>
         </div>
         <div class="copyright">© 2026 Vision AI inspired by Gaa-tha. All rights reserved.</div>
     </footer>
@@ -595,45 +562,6 @@
     <script>
         // Register ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
-
-        // 1. ADVANCED CUSTOM CURSOR LOGIC
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let outlineX = mouseX;
-        let outlineY = mouseY;
-        
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            // Move dot instantly
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-        });
-
-        // Animation loop for smooth outline delay (lerp)
-        function animateCursor() {
-            let dx = mouseX - outlineX;
-            let dy = mouseY - outlineY;
-            
-            outlineX += dx * 0.15; // easing factor
-            outlineY += dy * 0.15;
-            
-            cursorOutline.style.left = outlineX + 'px';
-            cursorOutline.style.top = outlineY + 'px';
-            
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Hover Effect specific targets
-        document.querySelectorAll('.hover-target, a').forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-        });
 
         // 2. HERO ANIMATION (Text Split & Reveal)
         // Manual split text into characters for advanced "stagger" reveal
