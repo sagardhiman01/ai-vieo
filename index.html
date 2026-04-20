@@ -207,96 +207,69 @@
         }
 
         /* ---------------- SERVICES ("HOW WE ROLL") ---------------- */
-        .section-padding {
-            padding: 150px 5%;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        .section-tag {
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        .section-title {
-            font-family: var(--serif);
-            font-size: clamp(3rem, 5vw, 5rem);
-            font-weight: 400;
-        }
+        .section-padding { padding: 150px 5%; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-tag { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; margin-bottom: 15px; }
+        .section-title { font-family: var(--serif); font-size: clamp(3rem, 5vw, 4.5rem); color: var(--text-dark); }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .service-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(230, 195, 92, 0.2);
-            border-radius: 20px;
-            padding: 50px 40px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
+            background: #fffdf5; /* Off-white Gaa-tha feel */
+            border: 1px solid rgba(230, 195, 92, 0.15);
+            border-radius: 24px;
+            padding: 45px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(230, 195, 92, 0.05);
+            transition: all 0.5s ease;
             opacity: 0;
-            transform: translateY(50px);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+            transform: translateY(30px);
         }
-        
+
         .service-card:hover {
-            transform: translateY(-10px) !important;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            transform: translateY(-8px) scale(1.02) !important;
+            box-shadow: 0 25px 50px rgba(230, 195, 92, 0.12);
             border-color: var(--accent);
         }
 
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 30px;
+        .sc-header { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; }
+        .sc-icon-box {
+            width: 50px; height: 50px;
+            border: 1px solid rgba(230, 195, 92, 0.5);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--accent);
+            background: white;
         }
-        
-        .service-title {
-            font-family: var(--serif);
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        
-        .service-desc {
-            font-size: 1rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        
-        .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 600;
+        .sc-title { font-family: var(--sans); font-size: 1.4rem; font-weight: 600; color: var(--text-dark); line-height: 1.2; }
+
+        .sc-points { list-style: none; padding: 0; margin-bottom: 35px; }
+        .sc-points li {
+            font-size: 0.95rem; color: var(--text-light);
+            margin-bottom: 12px;
+            padding-left: 20px;
             position: relative;
         }
-        .btn-link::after {
-            content: '→';
-            transition: transform 0.3s ease;
+        .sc-points li::before {
+            content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px;
+            background: var(--accent); border-radius: 50%;
         }
-        .btn-link:hover::after {
-            transform: translateX(5px);
-            color: var(--accent);
+
+        .sc-footer { text-align: right; }
+        .sc-link {
+            font-size: 0.85rem; font-weight: 600; color: var(--accent);
+            text-decoration: none; border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px; transition: opacity 0.3s;
         }
+        .sc-link:hover { opacity: 0.7; }
 
         /* ---------------- FEATURED WORK ---------------- */
         .work-showcase {
@@ -481,25 +454,100 @@
         </div>
         
         <div class="services-grid">
-            <div class="service-card gsap-card hover-target">
-                <div class="service-icon">✧</div>
-                <h3 class="service-title">AI Cinematic<br>Generation</h3>
-                <p class="service-desc">Ultra-high resolution AI video synthesis using next-gen diffusion models and real-time rendering pipelines.</p>
-                <a href="#" class="btn-link">Explore Service</a>
+            <!-- Card 1 -->
+            <div class="service-card gsap-card">
+                <div class="top-wrap">
+                    <div class="sc-header">
+                        <div class="sc-icon-box">📢</div>
+                        <h3 class="sc-title">Social Media Marketing</h3>
+                    </div>
+                    <ul class="sc-points">
+                        <li>Content Strategy & Calendar</li>
+                        <li>Community Management</li>
+                        <li>Platform-Specific Campaigns</li>
+                    </ul>
+                </div>
+                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
             </div>
             
-            <div class="service-card gsap-card hover-target">
-                <div class="service-icon">❋</div>
-                <h3 class="service-title">Neural VFX &<br>Motion</h3>
-                <p class="service-desc">Particle simulations and AI-driven visual effects composited into photoreal environments for brand films.</p>
-                <a href="#" class="btn-link">Explore Service</a>
+            <!-- Card 2 -->
+            <div class="service-card gsap-card">
+                <div class="top-wrap">
+                    <div class="sc-header">
+                        <div class="sc-icon-box">🎯</div>
+                        <h3 class="sc-title">Performance Marketing</h3>
+                    </div>
+                    <ul class="sc-points">
+                        <li>Meta & Google Ads</li>
+                        <li>Conversion Optimization</li>
+                        <li>Analytics & Reporting</li>
+                    </ul>
+                </div>
+                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
             </div>
             
-            <div class="service-card gsap-card hover-target">
-                <div class="service-icon">⟡</div>
-                <h3 class="service-title">Prompt<br>Engineering</h3>
-                <p class="service-desc">Strategic directorship for AI workflows. We train neural networks to produce specific, brand-aligned aesthetics.</p>
-                <a href="#" class="btn-link">Explore Service</a>
+            <!-- Card 3 -->
+            <div class="service-card gsap-card">
+                <div class="top-wrap">
+                    <div class="sc-header">
+                        <div class="sc-icon-box">🎨</div>
+                        <h3 class="sc-title">Branding & Design</h3>
+                    </div>
+                    <ul class="sc-points">
+                        <li>Brand Identity & Guidelines</li>
+                        <li>Visual Design Systems</li>
+                        <li>Packaging & Collateral</li>
+                    </ul>
+                </div>
+                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card gsap-card">
+                <div class="top-wrap">
+                    <div class="sc-header">
+                        <div class="sc-icon-box">🤝</div>
+                        <h3 class="sc-title">Influencer & UGC Marketing</h3>
+                    </div>
+                    <ul class="sc-points">
+                        <li>Influencer Partnerships</li>
+                        <li>UGC Campaign Management</li>
+                        <li>Creator Network Access</li>
+                    </ul>
+                </div>
+                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="service-card gsap-card">
+                <div class="top-wrap">
+                    <div class="sc-header">
+                        <div class="sc-icon-box">💻</div>
+                        <h3 class="sc-title">Web & App Development</h3>
+                    </div>
+                    <ul class="sc-points">
+                        <li>Custom Web Development</li>
+                        <li>Mobile App Solutions</li>
+                        <li>E-Commerce Platforms</li>
+                    </ul>
+                </div>
+                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="service-card gsap-card">
+                <div class="top-wrap">
+                    <div class="sc-header">
+                        <div class="sc-icon-box">🔍</div>
+                        <h3 class="sc-title">SEO / AEO / GEO</h3>
+                    </div>
+                    <ul class="sc-points">
+                        <li>Technical SEO Optimization</li>
+                        <li>AI Engine Optimization (AEO)</li>
+                        <li>Generative Search Optimization</li>
+                    </ul>
+                </div>
+                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
             </div>
         </div>
     </section>
