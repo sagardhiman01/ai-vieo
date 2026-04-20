@@ -1,0 +1,14 @@
+{
+  "name": "ai-video-portfolio",
+  "version": "1.0.0",
+  "description": "Premium AI Video Portfolio with 3D Scrolling, CMS and Video Uploads",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "simple-git": "^3.16.0"
+  }
+}

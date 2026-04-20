@@ -1,0 +1,121 @@
+{
+    "settings": {
+        "siteName": "Layers Cut",
+        "brandColor": "#efc44e",
+        "email": "hello@visionai.studio",
+        "copyright": "© 2026 Vision AI inspired by  All rights reserved."
+    },
+    "home": {
+        "heroTitle": "Vision AI.",
+        "heroSubtitle": "India-rooted. Global-minded.",
+        "marqueeText": "Emotional Storytelling <span></span> AI Cinematic Production <span></span> Creative Agency <span></span> Neural Architectures <span></span>",
+        "servicesTag": "How We Roll",
+        "servicesTitle": "Our Capabilities",
+        "workTag": "Featured Work",
+        "workTitle": "Latest Campaigns",
+        "ctaTitle": "Ready to craft<br><span>something iconic?</span>",
+        "ctaBtnText": "Start a Project"
+    },
+    "about": {
+        "heroTitle": "India-rooted.<br>Global-minded.",
+        "timeline": [
+            {
+                "title": "Our Story",
+                "subtitle": "The Origins",
+                "text": "Between late-night brainstorming and global campaign deep-dives, we cracked the formula: Emotion + Storytelling + Social Media. We built Gaa-tha to turn brand moments into movements—mixing taste, rigor, and speed."
+            },
+            {
+                "title": "Abhishek Khuthiya",
+                "subtitle": "The Strategist",
+                "text": "A business analyst turned brand storyteller, Abhishek drives Gaa-tha’s marketing magic. With a background in international business and an obsession with brand psychology, he ensures every campaign is built on insight and impact."
+            },
+            {
+                "title": "Getansh Savla",
+                "subtitle": "The Creative Mind",
+                "text": "A finance expert who traded spreadsheets for storytelling, Getansh crafts Gaa-tha’s most memorable campaigns."
+            },
+            {
+                "title": "The Problem",
+                "subtitle": "Why We Exist",
+                "text": "Brands craved engagement and loyalty but were lost in the digital noise. Algorithms favored quantity over quality; audiences scrolled past forgettable creative."
+            },
+            {
+                "title": "Our Solution",
+                "subtitle": "Emotional Storytelling",
+                "text": "Emotional storytelling powered by social—impactful, efficient, and truly connective. We blend performance data with creative taste to ship content people actually care about."
+            },
+            {
+                "title": "Our Mission",
+                "subtitle": "The Goal",
+                "text": "Create content that makes people feel, engage, and stay loyal—because people don’t just buy products; they buy stories. Every deliverable carries a clear outcome: awareness, engagement, or revenue."
+            }
+        ]
+    },
+    "portfolio": {
+        "heroTag": "Our Campaigns",
+        "heroTitle": "Selected Works",
+        "items": [
+            {
+                "title": "Quantum Atmospheres",
+                "subtitle": "AI VFX / Nexus Media",
+                "year": "2025",
+                "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+                "filterStyle": ""
+            },
+            {
+                "title": "Synthetic Lifecycle",
+                "subtitle": "Motion Design / Future Lab",
+                "year": "2026",
+                "image": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2600&auto=format&fit=crop",
+                "filterStyle": ""
+            },
+            {
+                "title": "Neural Cinematics Vol I",
+                "subtitle": "AI Cinematic / Apex Brands",
+                "year": "2025",
+                "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+                "filterStyle": "filter: hue-rotate(90deg);"
+            },
+            {
+                "title": "Digital Frontiers",
+                "subtitle": "3D World / Horizon Corp",
+                "year": "2026",
+                "image": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2600&auto=format&fit=crop",
+                "filterStyle": "filter: hue-rotate(180deg);"
+            }
+        ]
+    },
+    "services": {
+        "heroTag": "Our Capabilities",
+        "heroTitle": "How We Roll",
+        "items": [
+            {
+                "num": "01",
+                "name": "AI Cinematic Generation",
+                "desc": "High-resolution video synthesis using refined diffusion models."
+            },
+            {
+                "num": "02",
+                "name": "Neural VFX",
+                "desc": "Enhancing original footage with AI-driven visual effects."
+            },
+            {
+                "num": "03",
+                "name": "Prompt Engineering",
+                "desc": "Strategic directorship for AI workflows."
+            },
+            {
+                "num": "04",
+                "name": "Brand Film Production",
+                "desc": "End to end production of cinematic trailers and brand stories."
+            }
+        ]
+    },
+    "contact": {
+        "title": "Let's craft<br>your story.",
+        "desc": "Whether you're looking to redefine your brand's visual logic or need high-end cinematic generation, our collective is ready.",
+        "emailLabel": "Email Us",
+        "visitLabel": "Visit Us",
+        "visitText": "India-rooted.<br>Global-minded."
+    }
+}

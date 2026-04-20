@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISION AI | India-rooted. Global-minded.</title>
+    <meta name="description" content="Vision AI - Redefining Visual Logic.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #f5f1e6;
+            --accent: #e6c35c;
+            --text-dark: #1a1a1a;
+            --text-light: #5a5a5a;
+            --card-bg: rgba(255, 255, 255, 0.4);
+            --serif: 'Playfair Display', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-dark); 
+            font-family: var(--sans); 
+            cursor: none; /* Hide default cursor for custom one */
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------------- CUSTOM CURSOR ---------------- */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+        }
+        /* Hover state for cursor */
+        .hovering .cursor-outline {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(230, 195, 92, 0.2);
+            border-color: transparent;
+        }
+
+        /* ---------------- NAVIGATION ---------------- */
+        nav {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(245, 241, 230, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(230, 195, 92, 0.3);
+            border-radius: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.4s ease;
+        }
+        /* Hidden nav when scrolling down, shown scrolling up */
+        nav.nav-hidden {
+            top: -100px;
+        }
+        
+        .logo { 
+            font-family: var(--serif); 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            text-decoration: none; 
+            color: var(--text-dark); 
+        }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { 
+            font-size: 0.85rem; 
+            text-decoration: none; 
+            color: var(--text-dark); 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-weight: 500;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ---------------- HERO SECTION ---------------- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at center, transparent 0%, var(--bg) 80%), url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: -1;
+            transform: scale(1.1);
+        }
+
+        /* Circular Mask Reveal Element */
+        .circle-mask-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .circle-mask {
+            width: 30vw;
+            height: 30vw;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(230, 195, 92, 0.15);
+        }
+        /* Inner video inside the circle mask */
+        .circle-mask video {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            opacity: 0.6;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-family: var(--serif);
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-weight: 400;
+            line-height: 0.9;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        .hero-title .word { display: inline-block; overflow: hidden; }
+        .hero-title .char { display: inline-block; transform: translateY(100%); opacity: 0; }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* ---------------- MARQUEE (INFINITE SCROLL) ---------------- */
+        .marquee-wrapper {
+            width: 100%;
+            padding: 40px 0;
+            background: var(--text-dark);
+            color: var(--bg);
+            overflow: hidden;
+            position: relative;
+        }
+        .marquee-track {
+            display: flex;
+            width: fit-content;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-item {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-style: italic;
+            padding: 0 40px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-item span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin: 0 40px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Animates exactly half its width (duplicate content needed) */
+        }
+
+        /* ---------------- SERVICES ("HOW WE ROLL") ---------------- */
+        .section-padding {
+            padding: 150px 5%;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        .section-tag {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 400;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(230, 195, 92, 0.2);
+            border-radius: 20px;
+            padding: 50px 40px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+        
+        .service-title {
+            font-family: var(--serif);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-desc {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+        }
+        .btn-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+        .btn-link:hover::after {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+
+        /* ---------------- FEATURED WORK ---------------- */
+        .work-showcase {
+            padding: 100px 5%;
+            background-color: var(--text-dark); /* Dark section for contrast */
+            color: var(--bg);
+        }
+        .work-showcase .section-tag { color: var(--accent); }
+        .work-showcase .section-title { color: var(--bg); }
+        
+        .work-items {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .work-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            opacity: 0;
+        }
+        
+        .work-item:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl; /* simple way to reverse layout */
+        }
+        .work-item:nth-child(even) > * { direction: ltr; }
+        
+        .work-img-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            border: 1px solid rgba(230, 195, 92, 0.2);
+            /* Parallax setup */
+        }
+        .work-img {
+            width: 100%;
+            height: 120%; /* Extra height for parallax */
+            object-fit: cover;
+            position: absolute;
+            top: -10%;
+        }
+        
+        .work-info h3 {
+            font-family: var(--serif);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .work-info p {
+            font-size: 1.1rem;
+            color: rgba(245, 241, 230, 0.7);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .work-info .btn-link { color: var(--bg); }
+
+        /* ---------------- CALL TO ACTION & FOOTER ---------------- */
+        .cta-section {
+            padding: 150px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80vw; height: 80vw;
+            background: radial-gradient(circle, rgba(230, 195, 92, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .cta-title {
+            font-family: var(--serif);
+            font-size: clamp(4rem, 8vw, 7rem);
+            margin-bottom: 40px;
+        }
+        .cta-title span { font-style: italic; color: var(--accent); }
+        
+        .btn-large {
+            display: inline-block;
+            padding: 20px 50px;
+            background-color: var(--text-dark);
+            color: var(--bg);
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-large::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--accent);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        .btn-large:hover { color: var(--text-dark); border-color: var(--accent); }
+        .btn-large:hover::before { transform: scaleY(1); }
+
+        footer {
+            padding: 80px 5% 40px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        .footer-logo { font-family: var(--serif); font-size: 2.5rem; font-weight: 700; color: var(--text-dark); }
+        .footer-socials { display: flex; gap: 30px; }
+        .footer-socials a { color: var(--text-dark); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .footer-socials a:hover { color: var(--accent); }
+        .copyright { font-size: 0.85rem; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .circle-mask { width: 70vw; height: 70vw; }
+            .work-item, .work-item:nth-child(even) { grid-template-columns: 1fr; gap: 30px; direction: ltr;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <a href="index.html" class="logo">gaa-tha</a>
+        <ul class="nav-links">
+            <li><a href="#" class="hover-target">Services</a></li>
+            <li><a href="pages/portfolio.html" class="hover-target">Work</a></li>
+            <li><a href="pages/about.html" class="hover-target">About Us</a></li>
+            <li><a href="pages/contact.html" class="hover-target" style="color: var(--accent);">Initialize Project</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        
+        <div class="circle-mask-container">
+            <div class="circle-mask" id="hero-circle">
+                <!-- Fallback abstract color since we don't have video -->
+                <div style="background: linear-gradient(45deg, var(--bg), #d4c5a0); width:100%; height:100%;"></div>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title" id="split-text">
+                Vision AI.
+            </h1>
+            <p class="hero-subtitle">India-rooted. Global-minded.</p>
+        </div>
+    </section>
+
+    <!-- INFINITE MARQUEE -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track">
+            <!-- Content duplicated for seamless looping -->
+            <div class="marquee-item">Emotional Storytelling <span></span> AI Cinematic Production <span></span> Creative Agency <span></span> Neural Architectures <span></span></div>
+            <div class="marquee-item">Emotional Storytelling <span></span> AI Cinematic Production <span></span> Creative Agency <span></span> Neural Architectures <span></span></div>
+        </div>
+    </div>
+
+    <!-- SERVICES GRID -->
+    <section class="section-padding">
+        <div class="section-header fade-up">
+            <div class="section-tag">How We Roll</div>
+            <h2 class="section-title">Our Capabilities</h2>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card gsap-card hover-target">
+                <div class="service-icon">✧</div>
+                <h3 class="service-title">AI Cinematic<br>Generation</h3>
+                <p class="service-desc">Ultra-high resolution AI video synthesis using next-gen diffusion models and real-time rendering pipelines.</p>
+                <a href="#" class="btn-link">Explore Service</a>
+            </div>
+            
+            <div class="service-card gsap-card hover-target">
+                <div class="service-icon">❋</div>
+                <h3 class="service-title">Neural VFX &<br>Motion</h3>
+                <p class="service-desc">Particle simulations and AI-driven visual effects composited into photoreal environments for brand films.</p>
+                <a href="#" class="btn-link">Explore Service</a>
+            </div>
+            
+            <div class="service-card gsap-card hover-target">
+                <div class="service-icon">⟡</div>
+                <h3 class="service-title">Prompt<br>Engineering</h3>
+                <p class="service-desc">Strategic directorship for AI workflows. We train neural networks to produce specific, brand-aligned aesthetics.</p>
+                <a href="#" class="btn-link">Explore Service</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED WORK (DARK PARALLAX SECTION) -->
+    <section class="work-showcase">
+        <div class="section-header fade-up">
+            <div class="section-tag">Featured Work</div>
+            <h2 class="section-title">Latest Campaigns</h2>
+        </div>
+        
+        <div class="work-items">
+            <!-- Work Item 1 -->
+            <div class="work-item fade-up">
+                <div class="work-img-wrapper hover-target">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" alt="Work 1" class="work-img parallax-img">
+                </div>
+                <div class="work-info">
+                    <h3>Quantum Atmospheres</h3>
+                    <p>Particle-based volumetric simulations driven by custom neural nets, composited into photoreal environments. A complete redefinition of brand storytelling through artificial intelligence.</p>
+                    <a href="#" class="btn-link">View Case Study</a>
+                </div>
+            </div>
+            
+            <!-- Work Item 2 -->
+            <div class="work-item fade-up">
+                <div class="work-img-wrapper hover-target">
+                    <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2600&auto=format&fit=crop" alt="Work 2" class="work-img parallax-img">
+                </div>
+                <div class="work-info">
+                    <h3>Synthetic Lifecycle</h3>
+                    <p>Procedural motion design animated frame-by-frame with AI assistance. An award-winning exploration of biological forms through digital synthesis and mathematical generation.</p>
+                    <a href="#" class="btn-link">View Case Study</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-bg"></div>
+        <h2 class="cta-title fade-up">Ready to craft<br><span>something iconic?</span></h2>
+        <div class="fade-up" style="margin-top: 30px;">
+            <a href="pages/contact.html" class="btn-large hover-target" style="z-index: 2;">Start a Project</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">gaa-tha</div>
+        <div class="footer-socials">
+            <a href="#" class="hover-target">Instagram</a>
+            <a href="#" class="hover-target">LinkedIn</a>
+            <a href="#" class="hover-target">Twitter</a>
+            <a href="admin.html" class="hover-target" style="color: var(--accent);">Admin Panel</a>
+        </div>
+        <div class="copyright">© 2026 Vision AI inspired by Gaa-tha. All rights reserved.</div>
+    </footer>
+
+    <!-- GSAP ANIMATION LOGIC -->
+    <script>
+        // Register ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. ADVANCED CUSTOM CURSOR LOGIC
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let outlineX = mouseX;
+        let outlineY = mouseY;
+        
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Move dot instantly
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+
+        // Animation loop for smooth outline delay (lerp)
+        function animateCursor() {
+            let dx = mouseX - outlineX;
+            let dy = mouseY - outlineY;
+            
+            outlineX += dx * 0.15; // easing factor
+            outlineY += dy * 0.15;
+            
+            cursorOutline.style.left = outlineX + 'px';
+            cursorOutline.style.top = outlineY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover Effect specific targets
+        document.querySelectorAll('.hover-target, a').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+
+        // 2. HERO ANIMATION (Text Split & Reveal)
+        // Manual split text into characters for advanced "stagger" reveal
+        const title = document.getElementById('split-text');
+        const text = title.innerText;
+        title.innerHTML = '';
+        text.split('').forEach(char => {
+            if(char === ' ') {
+                title.innerHTML += `<span class="char">&nbsp;</span>`;
+            } else {
+                title.innerHTML += `<span class="word"><span class="char">${char}</span></span>`;
+            }
+        });
+
+        const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+        
+        // Initial intro timeline
+        tl.to('.hero-bg', { scale: 1, opacity: 0.25, duration: 2 })
+          .to('#split-text .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1.2 }, "-=1.5")
+          .to('.hero-subtitle', { y: 0, opacity: 1, duration: 1 }, "-=1")
+          .fromTo('#hero-circle', { scale: 0 }, { scale: 1, duration: 1.5, ease: "elastic.out(1, 0.7)" }, "-=1.5");
+
+        // 3. CIRCLE MASK SCROLL ANIMATION (Shrinks on scroll)
+        gsap.to('#hero-circle', {
+            scrollTrigger: {
+                trigger: '.hero',
+                start: "top top",
+                end: "bottom top",
+                scrub: 1 // smooth scrubbing
+            },
+            scale: 0.1,
+            opacity: 0,
+            y: -100
+        });
+
+        // 4. NAV HIDE ON SCROLL DOWN, SHOW ON UP
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('.nav-bar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                if (window.scrollY > lastScrollY) {
+                    nav.classList.add('nav-hidden');
+                } else {
+                    nav.classList.remove('nav-hidden');
+                }
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // 5. SCROLL TRIGGER FADE-UP ANIMATIONS
+        const fadeUpElements = gsap.utils.toArray('.fade-up');
+        fadeUpElements.forEach(el => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // 6. SERVICES CARDS STAGGERED REVEAL
+        gsap.to('.gsap-card', {
+            scrollTrigger: {
+                trigger: '.services-grid',
+                start: "top 80%"
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.2, // cascades the cards loading in
+            ease: "back.out(1.2)"
+        });
+
+        // 7. IMAGE PARALLAX EFFECT IN WORK SECTION
+        const parallaxImages = gsap.utils.toArray('.parallax-img');
+        parallaxImages.forEach(img => {
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: img.parentElement,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                },
+                y: "15%", // Adjusts image Y position relative to scroll
+                ease: "none"
+            });
+        });
+
+    </script>
+    <script src="js/cms.js"></script>
+</body>
+</html>

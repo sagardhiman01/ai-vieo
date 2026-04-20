@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | VISION AI</title>
+    <meta name="description" content="Our capabilities. India-rooted. Global-minded.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        :root {
+            --bg: #f5f1e6;
+            --accent: #e6c35c;
+            --text-dark: #1a1a1a;
+            --text-light: #5a5a5a;
+            --card-bg: rgba(255, 255, 255, 0.4);
+            --serif: 'Playfair Display', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg); color: var(--text-dark); 
+            font-family: var(--sans); cursor: none; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+        }
+
+        /* CUSTOM CURSOR */
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none; }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--accent); }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid var(--accent); transition: width 0.3s, height 0.3s, background-color 0.3s; }
+        .hovering .cursor-outline { width: 60px; height: 60px; background-color: rgba(230, 195, 92, 0.2); border-color: transparent; }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed; top: 30px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px;
+            background: rgba(245, 241, 230, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(230, 195, 92, 0.3); border-radius: 50px;
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.4s ease;
+        }
+        nav.nav-hidden { top: -100px; }
+        .logo { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; text-decoration: none; color: var(--text-dark); }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { font-size: 0.85rem; text-decoration: none; color: var(--text-dark); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500; position: relative;}
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--accent); transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* HERO & ACCORDIONS (Gaa-tha style Services) */
+        .services-hero { padding: 200px 5% 100px; text-align: center; }
+        .hero-tag { font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 600; }
+        .hero-title { font-family: var(--serif); font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 400; color: var(--text-dark); margin-bottom: 40px; }
+
+        .service-list { max-width: 1000px; margin: 0 auto; padding-bottom: 150px;}
+        
+        .service-item {
+            border-bottom: 1px solid rgba(26,26,26,0.1);
+            padding: 40px 0;
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr;
+            align-items: center;
+            opacity: 0; transform: translateY(30px);
+        }
+        .service-item:first-child { border-top: 1px solid rgba(26,26,26,0.1); }
+        
+        .s-num { font-size: 1.2rem; color: var(--accent); font-weight: 600;}
+        .s-name { font-family: var(--serif); font-size: 2.5rem; text-transform: capitalize;}
+        .s-desc { font-size: 1.05rem; color: var(--text-light); line-height: 1.6;}
+
+        /* FOOTER */
+        footer { padding: 80px 5% 40px; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; gap: 40px; }
+        .footer-logo { font-family: var(--serif); font-size: 2.5rem; font-weight: 700; color: var(--text-dark); }
+        .footer-socials { display: flex; gap: 30px; }
+        .footer-socials a { color: var(--text-dark); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .footer-socials a:hover { color: var(--accent); }
+        .copyright { font-size: 0.85rem; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .service-item { grid-template-columns: 1fr; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-dot"></div><div class="cursor-outline"></div>
+
+    <nav class="nav-bar">
+        <a href="../index.html" class="logo">gaa-tha</a>
+        <ul class="nav-links">
+            <li><a href="services.html" class="hover-target" style="border-bottom: 1px solid var(--accent);">Services</a></li>
+            <li><a href="portfolio.html" class="hover-target">Work</a></li>
+            <li><a href="about.html" class="hover-target">About Us</a></li>
+            <li><a href="contact.html" class="hover-target" style="color: var(--accent);">Initialize Project</a></li>
+        </ul>
+    </nav>
+
+    <div class="services-hero">
+        <div class="hero-tag fade-up">Our Capabilities</div>
+        <h1 class="hero-title fade-up">How We Roll</h1>
+    </div>
+
+    <div class="service-list">
+        <div class="service-item stunner hover-target">
+            <div class="s-num">01</div>
+            <div class="s-name">AI Cinematic Generation</div>
+            <div class="s-desc">High-resolution video synthesis using refined diffusion models.</div>
+        </div>
+        <div class="service-item stunner hover-target">
+            <div class="s-num">02</div>
+            <div class="s-name">Neural VFX</div>
+            <div class="s-desc">Enhancing original footage with AI-driven visual effects.</div>
+        </div>
+        <div class="service-item stunner hover-target">
+            <div class="s-num">03</div>
+            <div class="s-name">Prompt Engineering</div>
+            <div class="s-desc">Strategic directorship for AI workflows.</div>
+        </div>
+        <div class="service-item stunner hover-target">
+            <div class="s-num">04</div>
+            <div class="s-name">Brand Film Production</div>
+            <div class="s-desc">End to end production of cinematic trailers and brand stories.</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">gaa-tha</div>
+        <div class="footer-socials">
+            <a href="#" class="hover-target">Instagram</a>
+            <a href="#" class="hover-target">LinkedIn</a>
+            <a href="#" class="hover-target">Twitter</a>
+            <a href="../admin.html" class="hover-target" style="color: var(--accent);">Admin Panel</a>
+        </div>
+        <div class="copyright">© 2026 Vision AI inspired by Gaa-tha. All rights reserved.</div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // CURSOR
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let outlineX = mouseX, outlineY = mouseY;
+        window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; cursorDot.style.left = mouseX + 'px'; cursorDot.style.top = mouseY + 'px'; });
+        function animateCursor() { outlineX += (mouseX - outlineX) * 0.15; outlineY += (mouseY - outlineY) * 0.15; cursorOutline.style.left = outlineX + 'px'; cursorOutline.style.top = outlineY + 'px'; requestAnimationFrame(animateCursor); }
+        animateCursor();
+        document.querySelectorAll('.hover-target, a').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('hovering')); el.addEventListener('mouseleave', () => document.body.classList.remove('hovering')); });
+
+        // NAV
+        let lastScrollY = window.scrollY;
+        const nav = document.querySelector('.nav-bar');
+        window.addEventListener('scroll', () => { if (window.scrollY > 80) { if (window.scrollY > lastScrollY) nav.classList.add('nav-hidden'); else nav.classList.remove('nav-hidden'); } else { nav.classList.remove('nav-hidden'); } lastScrollY = window.scrollY; });
+
+        // REVEALS
+        gsap.utils.toArray('.fade-up').forEach(el => gsap.fromTo(el, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out" }) );
+        gsap.to('.stunner', { scrollTrigger: { trigger: '.service-list', start: "top 80%" }, y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power3.out" });
+    </script>
+    <script src="../js/cms.js"></script>
+</body>
+</html>
