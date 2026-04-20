@@ -94,10 +94,20 @@ async function syncWithGithub(message) {
     await git.push('origin', 'main');
 }
 
+app.get('/ping', (req, res) => res.send('pong'));
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    
+    // KEEP-ALIVE LOGIC: Self-ping every 10 minutes to prevent Render sleep
+    const SITE_URL = 'https://layerscut.online'; // or your render internal url
+    setInterval(() => {
+        fetch(`${SITE_URL}/ping`)
+            .then(() => console.log('Keep-alive ping successful'))
+            .catch(err => console.error('Keep-alive ping failed:', err.message));
+    }, 10 * 60 * 1000); // 10 minutes
 });
