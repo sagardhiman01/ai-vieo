@@ -42,7 +42,7 @@
         .nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; left: 0; background-color: var(--accent); transition: width 0.3s ease; }
         .nav-links a:hover::after { width: 100%; }
 
-        /* HERO & ACCORDIONS (Gaa-tha style Services) */
+        /* HERO & ACCORDIONS (Layers Cut Media style Services) */
         .services-hero { padding: 200px 5% 100px; text-align: center; }
         .hero-tag { font-size: 1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 600; }
         .hero-title { font-family: var(--serif); font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 400; color: var(--text-dark); margin-bottom: 40px; }
@@ -76,13 +76,14 @@
             .service-item { grid-template-columns: 1fr; gap: 15px; }
         }
     </style>
+<link rel="stylesheet" href="../css/modern-effects.css">
 </head>
 <body>
 
 
 
     <nav class="nav-bar">
-        <a href="../index.html" class="logo">gaa-tha</a>
+        <a href="../index.html" class="logo">Layers Cut Media</a>
         <ul class="nav-links">
             <li><a href="services.html" class="hover-target" style="border-bottom: 1px solid var(--accent);">Services</a></li>
             <li><a href="portfolio.html" class="hover-target">Work</a></li>
@@ -120,13 +121,13 @@
     </div>
 
     <footer>
-        <div class="footer-logo">gaa-tha</div>
+        <div class="footer-logo">Layers Cut Media</div>
         <div class="footer-socials">
             <a href="#" class="hover-target">Instagram</a>
             <a href="#" class="hover-target">LinkedIn</a>
             <a href="#" class="hover-target">Twitter</a>
         </div>
-        <div class="copyright">© 2026 Vision AI inspired by Gaa-tha. All rights reserved.</div>
+        <div class="copyright">© 2026 Vision AI inspired by Layers Cut Media. All rights reserved.</div>
     </footer>
 
     <script>
@@ -144,5 +145,6 @@
         gsap.to('.stunner', { scrollTrigger: { trigger: '.service-list', start: "top 80%" }, y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power3.out" });
     </script>
     <script src="../js/cms.js"></script>
+<script src="../js/modern-effects.js"></script>
 </body>
 </html>

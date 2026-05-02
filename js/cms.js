@@ -1,4 +1,4 @@
-// Vision AI CMS Engine - Gaa-tha version
+// Vision AI CMS Engine - Layers Cut Media version
 
 const CMS = {
     data: null,

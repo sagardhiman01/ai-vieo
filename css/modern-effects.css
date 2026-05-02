@@ -1,0 +1,71 @@
+/* CINEMATIC COLOR GRADING & MODERN ANIMATIONS */
+
+/* 1. Color Grading Overlay */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, transparent 30%, rgba(20, 10, 30, 0.15) 100%), 
+                linear-gradient(45deg, rgba(157, 80, 187, 0.08), rgba(0, 0, 0, 0.05));
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: overlay;
+}
+
+/* Optional noise filter for film grain effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+
+/* 3. Global Page Transition */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1a1a;
+    z-index: 100000;
+    transform-origin: bottom;
+}
+
+/* 4. Smooth Content Reveal Classes */
+.cinematic-reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(5px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* 5. Image Hover Effects */
+.img-hover-wrap {
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+}
+.img-hover-wrap img {
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
+}
+.img-hover-wrap:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1) contrast(1.05);
+}

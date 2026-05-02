@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VISION AI | India-rooted. Global-minded.</title>
+    <title>Layers Cut | India-rooted. Global-minded.</title>
     <meta name="description" content="Vision AI - Redefining Visual Logic.">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- GSAP for advanced animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
     <style>
         :root {
             --bg: #f5f1e6;
-            --accent: #e6c35c;
+            --accent: #9d50bb;
+            --accent-light: #6e48aa;
+            --accent-glow: rgba(157, 80, 187, 0.3);
             --text-dark: #1a1a1a;
             --text-light: #5a5a5a;
             --card-bg: rgba(255, 255, 255, 0.4);
@@ -40,10 +43,10 @@
             transform: translateX(-50%);
             width: 90%;
             max-width: 1200px;
-            background: rgba(245, 241, 230, 0.8);
+            background: rgba(245, 241, 230, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(230, 195, 92, 0.3);
+            border: 1px solid rgba(123, 45, 142, 0.2);
             border-radius: 50px;
             display: flex;
             justify-content: space-between;
@@ -101,10 +104,10 @@
         .hero-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(circle at center, transparent 0%, var(--bg) 80%), url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2670&auto=format&fit=crop');
+            background-image: linear-gradient(rgba(100, 45, 120, 0.2), rgba(100, 45, 120, 0.2)), radial-gradient(circle at center, transparent 0%, var(--bg) 80%), url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2670&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            opacity: 0.15;
+            opacity: 0.3;
             z-index: -1;
             transform: scale(1.1);
         }
@@ -130,7 +133,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            box-shadow: 0 0 60px rgba(230, 195, 92, 0.15);
+            box-shadow: 0 0 80px var(--accent-glow), 0 0 120px rgba(123, 45, 142, 0.1);
         }
         /* Inner video inside the circle mask */
         .circle-mask video {
@@ -173,7 +176,7 @@
         .marquee-wrapper {
             width: 100%;
             padding: 40px 0;
-            background: var(--text-dark);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b3d 100%);
             color: var(--bg);
             overflow: hidden;
             position: relative;
@@ -196,7 +199,7 @@
             display: inline-block;
             width: 12px;
             height: 12px;
-            background-color: var(--accent);
+            background-color: var(--accent-light);
             border-radius: 50%;
             margin: 0 40px;
         }
@@ -221,14 +224,14 @@
         }
 
         .service-card {
-            background: #fffdf5; /* Off-white Gaa-tha feel */
-            border: 1px solid rgba(230, 195, 92, 0.15);
+            background: #fffdf5;
+            border: 1px solid rgba(123, 45, 142, 0.12);
             border-radius: 24px;
             padding: 45px 35px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            box-shadow: 0 10px 30px rgba(230, 195, 92, 0.05);
+            box-shadow: 0 10px 30px rgba(123, 45, 142, 0.05);
             transition: all 0.5s ease;
             opacity: 0;
             transform: translateY(30px);
@@ -236,14 +239,14 @@
 
         .service-card:hover {
             transform: translateY(-8px) scale(1.02) !important;
-            box-shadow: 0 25px 50px rgba(230, 195, 92, 0.12);
+            box-shadow: 0 25px 50px rgba(123, 45, 142, 0.15);
             border-color: var(--accent);
         }
 
         .sc-header { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; }
         .sc-icon-box {
             width: 50px; height: 50px;
-            border: 1px solid rgba(230, 195, 92, 0.5);
+            border: 1px solid rgba(123, 45, 142, 0.3);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.2rem; color: var(--accent);
@@ -274,7 +277,7 @@
         /* ---------------- FEATURED WORK ---------------- */
         .work-showcase {
             padding: 100px 5%;
-            background-color: var(--text-dark); /* Dark section for contrast */
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b3d 100%);
             color: var(--bg);
         }
         .work-showcase .section-tag { color: var(--accent); }
@@ -307,7 +310,7 @@
             border-radius: 20px;
             overflow: hidden;
             aspect-ratio: 4/3;
-            border: 1px solid rgba(230, 195, 92, 0.2);
+            border: 1px solid rgba(123, 45, 142, 0.3);
             /* Parallax setup */
         }
         .work-img {
@@ -342,7 +345,7 @@
             position: absolute;
             top: 50%; left: 50%; transform: translate(-50%, -50%);
             width: 80vw; height: 80vw;
-            background: radial-gradient(circle, rgba(230, 195, 92, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(123, 45, 142, 0.1) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -378,7 +381,7 @@
             transition: transform 0.4s ease;
             z-index: -1;
         }
-        .btn-large:hover { color: var(--text-dark); border-color: var(--accent); }
+        .btn-large:hover { color: #fff; border-color: var(--accent); }
         .btn-large:hover::before { transform: scaleY(1); }
 
         footer {
@@ -402,6 +405,7 @@
         }
 
     </style>
+<link rel="stylesheet" href="css/modern-effects.css">
 </head>
 <body>
 
@@ -409,8 +413,9 @@
 
     <!-- NAVIGATION -->
     <nav class="nav-bar">
-        <a href="index.html" class="logo">gaa-tha</a>
+        <a href="index.html" class="logo">Layers Cut</a>
         <ul class="nav-links">
+            <li><a href="index.html" class="hover-target">Home</a></li>
             <li><a href="#" class="hover-target">Services</a></li>
             <li><a href="pages/portfolio.html" class="hover-target">Work</a></li>
             <li><a href="pages/about.html" class="hover-target">About Us</a></li>
@@ -419,21 +424,125 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-bg"></div>
+    <section class="hero" style="background: #ffffff; position: relative;">
+        <div class="hero-bg" style="display: none;"></div>
         
-        <div class="circle-mask-container">
-            <div class="circle-mask" id="hero-circle">
-                <!-- Fallback abstract color since we don't have video -->
-                <div style="background: linear-gradient(45deg, var(--bg), #d4c5a0); width:100%; height:100%;"></div>
+        <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; padding-top: 100px;">
+        <style>
+            /* Sliding Logo Animation */
+            .logo-anim-wrapper {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 400px;
+                width: 100%;
+                position: relative;
+            }
+            .anim-logo-box {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: logoSlide 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+                animation-delay: 1.5s;
+                opacity: 0;
+                animation: logoReveal 1s ease forwards, logoSlide 1s cubic-bezier(0.77, 0, 0.175, 1) forwards 1.5s;
+            }
+            .anim-logo-box img {
+                width: 400px; /* Ultra Massive */
+                height: auto;
+                filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+            }
+            .anim-text-box {
+                position: absolute;
+                left: calc(50% + 120px);
+                opacity: 0;
+                text-align: left;
+                animation: textFadeIn 0.8s ease forwards;
+                animation-delay: 1.8s;
+                padding-left: 45px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .anim-text-box h2 {
+                font-family: var(--serif);
+                font-size: 6.5rem; /* Ultra Massive */
+                color: var(--text-dark);
+                margin-bottom: 20px;
+                line-height: 0.8; 
+                font-weight: 400;
+                border-left: 8px solid var(--accent);
+                padding-left: 35px;
+            }
+            .anim-text-box p {
+                font-size: 1.5rem;
+                color: var(--text-light);
+                letter-spacing: 5px;
+                text-transform: uppercase;
+                font-weight: 700;
+                line-height: 1.3;
+                opacity: 0.8;
+                padding-left: 43px;
+            }
+
+            @keyframes logoReveal {
+                from { opacity: 0; transform: scale(0.6); }
+                to { opacity: 1; transform: scale(1); }
+            }
+            @keyframes logoSlide {
+                from { transform: translateX(0); }
+                to { transform: translateX(-420px); } /* Compacted but large */
+            }
+            @keyframes textFadeIn {
+                from { opacity: 0; transform: translateX(60px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
+
+            /* TABLET OPTIMIZATION */
+            @media (max-width: 1024px) {
+                .logo-anim-wrapper { min-height: 300px; }
+                .anim-logo-box img { width: 280px; }
+                @keyframes logoSlide {
+                    from { transform: translateX(0); }
+                    to { transform: translateX(-300px); }
+                }
+                .anim-text-box { left: calc(50% + 50px); }
+                .anim-text-box h2 { font-size: 4.5rem; }
+                .anim-text-box p { font-size: 1.1rem; }
+            }
+
+            /* MOBILE OPTIMIZATION */
+            @media (max-width: 768px) {
+                .logo-anim-wrapper { flex-direction: column; min-height: 600px; margin-top: 0; }
+                .anim-logo-box img { width: 220px; }
+                @keyframes logoSlide {
+                    from { transform: translateY(0); }
+                    to { transform: translateY(-150px); }
+                }
+                .anim-text-box { 
+                    left: 50%; 
+                    transform: translateX(-50%); 
+                    text-align: center; 
+                    padding-left: 0; 
+                    margin-top: 250px; 
+                    width: 95%;
+                }
+                .anim-text-box h2 { font-size: 3.5rem; border-left: none; border-top: 4px solid var(--accent); padding-left: 0; padding-top: 25px; }
+                .anim-text-box p { font-size: 1rem; padding-left: 0; margin-top: 15px; }
+            }
+        </style>
+
+        <div class="logo-anim-wrapper">
+            <div class="anim-logo-box">
+                <img src="logo.png" alt="Layers Cut Logo" onerror="this.onerror=null; this.src='uploads/logo.png';">
+            </div>
+            <div class="anim-text-box">
+                <h2>What We Work</h2>
+                <p>AI Cinematic Production<br>& Creative Strategy</p>
             </div>
         </div>
-
-        <div class="hero-content">
-            <h1 class="hero-title" id="split-text">
-                Vision AI.
-            </h1>
-            <p class="hero-subtitle">India-rooted. Global-minded.</p>
         </div>
     </section>
 
@@ -458,7 +567,15 @@
             <div class="service-card gsap-card">
                 <div class="top-wrap">
                     <div class="sc-header">
-                        <div class="sc-icon-box">📢</div>
+                        <div class="sc-icon-box" style="border:none; background:transparent;">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/xpgofwru.json"
+                                trigger="loop"
+                                delay="2000"
+                                colors="primary:#9d50bb,secondary:#1a1a1a"
+                                style="width:50px;height:50px">
+                            </lord-icon>
+                        </div>
                         <h3 class="sc-title">Social Media Marketing</h3>
                     </div>
                     <ul class="sc-points">
@@ -467,30 +584,22 @@
                         <li>Platform-Specific Campaigns</li>
                     </ul>
                 </div>
-                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
+                <div class="sc-footer"><a href="pages/portfolio.html" class="sc-link">View more</a></div>
             </div>
             
             <!-- Card 2 -->
             <div class="service-card gsap-card">
                 <div class="top-wrap">
                     <div class="sc-header">
-                        <div class="sc-icon-box">🎯</div>
-                        <h3 class="sc-title">Performance Marketing</h3>
-                    </div>
-                    <ul class="sc-points">
-                        <li>Meta & Google Ads</li>
-                        <li>Conversion Optimization</li>
-                        <li>Analytics & Reporting</li>
-                    </ul>
-                </div>
-                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="service-card gsap-card">
-                <div class="top-wrap">
-                    <div class="sc-header">
-                        <div class="sc-icon-box">🎨</div>
+                        <div class="sc-icon-box" style="border:none; background:transparent;">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/wloilxuq.json"
+                                trigger="loop"
+                                delay="2000"
+                                colors="primary:#9d50bb,secondary:#1a1a1a"
+                                style="width:50px;height:50px">
+                            </lord-icon>
+                        </div>
                         <h3 class="sc-title">Branding & Design</h3>
                     </div>
                     <ul class="sc-points">
@@ -499,55 +608,31 @@
                         <li>Packaging & Collateral</li>
                     </ul>
                 </div>
-                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
+                <div class="sc-footer"><a href="pages/portfolio.html" class="sc-link">View more</a></div>
             </div>
 
-            <!-- Card 4 -->
+            <!-- Card 3 -->
             <div class="service-card gsap-card">
                 <div class="top-wrap">
                     <div class="sc-header">
-                        <div class="sc-icon-box">🤝</div>
-                        <h3 class="sc-title">Influencer & UGC Marketing</h3>
+                        <div class="sc-icon-box" style="border:none; background:transparent;">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/sbqvyvcs.json"
+                                trigger="loop"
+                                delay="2000"
+                                colors="primary:#9d50bb,secondary:#1a1a1a"
+                                style="width:50px;height:50px">
+                            </lord-icon>
+                        </div>
+                        <h3 class="sc-title">Content Production by AI Video</h3>
                     </div>
                     <ul class="sc-points">
-                        <li>Influencer Partnerships</li>
-                        <li>UGC Campaign Management</li>
-                        <li>Creator Network Access</li>
+                        <li>AI Cinematic Generation</li>
+                        <li>Neural VFX</li>
+                        <li>Brand Film Production</li>
                     </ul>
                 </div>
-                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="service-card gsap-card">
-                <div class="top-wrap">
-                    <div class="sc-header">
-                        <div class="sc-icon-box">💻</div>
-                        <h3 class="sc-title">Web & App Development</h3>
-                    </div>
-                    <ul class="sc-points">
-                        <li>Custom Web Development</li>
-                        <li>Mobile App Solutions</li>
-                        <li>E-Commerce Platforms</li>
-                    </ul>
-                </div>
-                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="service-card gsap-card">
-                <div class="top-wrap">
-                    <div class="sc-header">
-                        <div class="sc-icon-box">🔍</div>
-                        <h3 class="sc-title">SEO / AEO / GEO</h3>
-                    </div>
-                    <ul class="sc-points">
-                        <li>Technical SEO Optimization</li>
-                        <li>AI Engine Optimization (AEO)</li>
-                        <li>Generative Search Optimization</li>
-                    </ul>
-                </div>
-                <div class="sc-footer"><a href="#" class="sc-link">View work</a></div>
+                <div class="sc-footer"><a href="pages/portfolio.html" class="sc-link">View more</a></div>
             </div>
         </div>
     </section>
@@ -597,13 +682,13 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">gaa-tha</div>
+        <div class="footer-logo">Layers Cut</div>
         <div class="footer-socials">
             <a href="#" class="hover-target">Instagram</a>
             <a href="#" class="hover-target">LinkedIn</a>
             <a href="#" class="hover-target">Twitter</a>
         </div>
-        <div class="copyright">© 2026 Vision AI inspired by Gaa-tha. All rights reserved.</div>
+        <div class="copyright">© 2026 Layers Cut. All rights reserved.</div>
     </footer>
 
     <!-- GSAP ANIMATION LOGIC -->
@@ -614,6 +699,7 @@
         // 2. HERO ANIMATION (Text Split & Reveal)
         // Manual split text into characters for advanced "stagger" reveal
         const title = document.getElementById('split-text');
+        if(title) {
         const text = title.innerText;
         title.innerHTML = '';
         text.split('').forEach(char => {
@@ -623,6 +709,7 @@
                 title.innerHTML += `<span class="word"><span class="char">${char}</span></span>`;
             }
         });
+        }
 
         const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
         
@@ -630,20 +717,7 @@
         tl.to('.hero-bg', { scale: 1, opacity: 0.25, duration: 2 })
           .to('#split-text .char', { y: 0, opacity: 1, stagger: 0.05, duration: 1.2 }, "-=1.5")
           .to('.hero-subtitle', { y: 0, opacity: 1, duration: 1 }, "-=1")
-          .fromTo('#hero-circle', { scale: 0 }, { scale: 1, duration: 1.5, ease: "elastic.out(1, 0.7)" }, "-=1.5");
-
-        // 3. CIRCLE MASK SCROLL ANIMATION (Shrinks on scroll)
-        gsap.to('#hero-circle', {
-            scrollTrigger: {
-                trigger: '.hero',
-                start: "top top",
-                end: "bottom top",
-                scrub: 1 // smooth scrubbing
-            },
-            scale: 0.1,
-            opacity: 0,
-            y: -100
-        });
+          .fromTo('#hero-circle', { scale: 0 }, { scale: 1, duration: 1.5, ease: "elastic.out(1, 0.7)" }, "-=1");
 
         // 4. NAV HIDE ON SCROLL DOWN, SHOW ON UP
         let lastScrollY = window.scrollY;
@@ -708,5 +782,6 @@
 
     </script>
     <script src="js/cms.js"></script>
+<script src="js/modern-effects.js"></script>
 </body>
 </html>

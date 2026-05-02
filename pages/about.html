@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Gaa-tha Style</title>
+    <title>About Us | Layers Cut Media Style</title>
     <meta name="description" content="India-rooted. Global-minded.">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -75,10 +75,11 @@
         }
         
     </style>
+<link rel="stylesheet" href="../css/modern-effects.css">
 </head>
 <body>
     <nav>
-        <a href="../index.html" class="logo">gaa-tha</a>
+        <a href="../index.html" class="logo">Layers Cut Media</a>
         <ul class="nav-links">
             <li><a href="services.html">Services</a></li>
             <li><a href="portfolio.html">Work</a></li>
@@ -98,9 +99,9 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-                <h4>Our Story</h4>
-                <h5>The Origins</h5>
-                <p>Between late-night brainstorming and global campaign deep-dives, we cracked the formula: Emotion + Storytelling + Social Media. We built Gaa-tha to turn brand moments into movements—mixing taste, rigor, and speed.</p>
+                <h4>Genesis</h4>
+                <h5>The Spark</h5>
+                <p>We didn't just start a studio; we ignited a new way of seeing. By fusing human emotion with neural computing, we craft visual experiences that linger long after the screen goes dark.</p>
             </div>
         </div>
 
@@ -108,9 +109,9 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-                <h4>Abhishek Khuthiya</h4>
-                <h5>The Strategist</h5>
-                <p>A business analyst turned brand storyteller, Abhishek drives Gaa-tha’s marketing magic. With a background in international business and an obsession with brand psychology, he ensures every campaign is built on insight and impact.</p>
+                <h4>Sagar Dhiman</h4>
+                <h5>Chief Visionary</h5>
+                <p>With an eye for the unseen, Sagar directs our creative pulse. He translates complex brand identities into cinematic masterpieces, ensuring every pixel tells a story of elegance and impact.</p>
             </div>
         </div>
 
@@ -118,9 +119,9 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-                <h4>Getansh Savla</h4>
-                <h5>The Creative Mind</h5>
-                <p>A finance expert who traded spreadsheets for storytelling, Getansh crafts Gaa-tha’s most memorable campaigns. His expertise in marketing and consumer behavior makes sure every piece of content connects, engages, and converts.</p>
+                <h4>Shivam Dhiman</h4>
+                <h5>Technical Maestro</h5>
+                <p>The architect of our digital landscapes. Shivam masters the intersection of code and cinema, pushing the boundaries of what's possible with AI to deliver flawless, high-octane productions.</p>
             </div>
         </div>
 
@@ -128,9 +129,9 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-                <h4>The Problem</h4>
-                <h5>Why We Exist</h5>
-                <p>Brands craved engagement and loyalty but were lost in the digital noise. Algorithms favored quantity over quality; audiences scrolled past forgettable creative.</p>
+                <h4>The Void</h4>
+                <h5>Identifying the Gap</h5>
+                <p>In a world saturated with generic content, authenticity has become the ultimate luxury. We saw brands losing their essence to algorithms and decided to fight back with soul-driven logic.</p>
             </div>
         </div>
 
@@ -138,9 +139,9 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-                <h4>Our Solution</h4>
-                <h5>Emotional Storytelling</h5>
-                <p>Emotional storytelling powered by social—impactful, efficient, and truly connective. We blend performance data with creative taste to ship content people actually care about.</p>
+                <h4>Synthesis</h4>
+                <h5>Our Blueprint</h5>
+                <p>We blend performance-driven data with pure artistic intuition. This synthesis allows us to create content that isn't just seen—it's felt, shared, and remembered.</p>
             </div>
         </div>
         
@@ -148,16 +149,16 @@
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-card">
-                <h4>Our Mission</h4>
-                <h5>The Goal</h5>
-                <p>Create content that makes people feel, engage, and stay loyal—because people don’t just buy products; they buy stories. Every deliverable carries a clear outcome: awareness, engagement, or revenue.</p>
+                <h4>Legacy</h4>
+                <h5>The Horizon</h5>
+                <p>Our mission is to set the new benchmark for visual excellence. We are building a future where technology serves art, creating a lasting legacy for the brands we partner with.</p>
             </div>
         </div>
 
     </div>
 
     <div class="footer">
-        <p>© 2025 gaa-tha. All rights reserved.</p>
+        <p>© 2025 Layers Cut Media. All rights reserved.</p>
     </div>
 
     <script>
@@ -170,8 +171,10 @@
         }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
         document.querySelectorAll('.timeline-card').forEach(card => {
+            observer.observe(card);
         });
     </script>
     <script src="../js/cms.js"></script>
+<script src="../js/modern-effects.js"></script>
 </body>
 </html>

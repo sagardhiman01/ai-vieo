@@ -1,12 +1,12 @@
 {
     "settings": {
         "siteName": "Layers Cut",
-        "brandColor": "#efc44e",
+        "brandColor": "#9d50bb",
         "email": "hello@visionai.studio",
         "copyright": "© 2026 Vision AI inspired by  All rights reserved."
     },
     "home": {
-        "heroTitle": "Vision AI.",
+        "heroTitle": "Layers Cut.",
         "heroSubtitle": "India-rooted. Global-minded.",
         "marqueeText": "Emotional Storytelling <span></span> AI Cinematic Production <span></span> Creative Agency <span></span> Neural Architectures <span></span>",
         "servicesTag": "How We Roll",
@@ -20,34 +20,34 @@
         "heroTitle": "India-rooted.<br>Global-minded.",
         "timeline": [
             {
-                "title": "Our Story",
-                "subtitle": "The Origins",
-                "text": "Between late-night brainstorming and global campaign deep-dives, we cracked the formula: Emotion + Storytelling + Social Media. We built Gaa-tha to turn brand moments into movements—mixing taste, rigor, and speed."
+                "title": "Genesis",
+                "subtitle": "The Spark",
+                "text": "We didn't just start a studio; we ignited a new way of seeing. By fusing human emotion with neural computing, we craft visual experiences that linger long after the screen goes dark."
             },
             {
-                "title": "Abhishek Khuthiya",
-                "subtitle": "The Strategist",
-                "text": "A business analyst turned brand storyteller, Abhishek drives Gaa-tha’s marketing magic. With a background in international business and an obsession with brand psychology, he ensures every campaign is built on insight and impact."
+                "title": "Sagar Dhiman",
+                "subtitle": "Chief Visionary",
+                "text": "With an eye for the unseen, Sagar directs our creative pulse. He translates complex brand identities into cinematic masterpieces, ensuring every pixel tells a story of elegance and impact."
             },
             {
-                "title": "Getansh Savla",
-                "subtitle": "The Creative Mind",
-                "text": "A finance expert who traded spreadsheets for storytelling, Getansh crafts Gaa-tha’s most memorable campaigns."
+                "title": "Shivam Dhiman",
+                "subtitle": "Technical Maestro",
+                "text": "The architect of our digital landscapes. Shivam masters the intersection of code and cinema, pushing the boundaries of what's possible with AI to deliver flawless productions."
             },
             {
-                "title": "The Problem",
-                "subtitle": "Why We Exist",
-                "text": "Brands craved engagement and loyalty but were lost in the digital noise. Algorithms favored quantity over quality; audiences scrolled past forgettable creative."
+                "title": "The Void",
+                "subtitle": "Identifying the Gap",
+                "text": "In a world saturated with generic content, authenticity has become the ultimate luxury. We saw brands losing their essence and decided to fight back with soul-driven logic."
             },
             {
-                "title": "Our Solution",
-                "subtitle": "Emotional Storytelling",
-                "text": "Emotional storytelling powered by social—impactful, efficient, and truly connective. We blend performance data with creative taste to ship content people actually care about."
+                "title": "Synthesis",
+                "subtitle": "Our Blueprint",
+                "text": "We blend performance-driven data with pure artistic intuition. This synthesis allows us to create content that isn't just seen—it's felt and remembered."
             },
             {
-                "title": "Our Mission",
-                "subtitle": "The Goal",
-                "text": "Create content that makes people feel, engage, and stay loyal—because people don’t just buy products; they buy stories. Every deliverable carries a clear outcome: awareness, engagement, or revenue."
+                "title": "Legacy",
+                "subtitle": "The Horizon",
+                "text": "Our mission is to set the new benchmark for visual excellence. We are building a future where technology serves art, creating a lasting legacy for the brands we partner with."
             }
         ]
     },
@@ -101,11 +101,6 @@
             },
             {
                 "num": "03",
-                "name": "Prompt Engineering",
-                "desc": "Strategic directorship for AI workflows."
-            },
-            {
-                "num": "04",
                 "name": "Brand Film Production",
                 "desc": "End to end production of cinematic trailers and brand stories."
             }
