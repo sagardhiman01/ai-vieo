@@ -116,21 +116,10 @@
         }
         .project-card:hover .project-img { transform: scale(1.05); }
         
-        /* Video overlay icon */
-        .play-icon {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8);
-            width: 80px; height: 80px; background: rgba(245, 241, 230, 0.9);
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            opacity: 0; transition: all 0.4s ease; pointer-events: none;
-        }
-        .play-icon::after {
-            content: ''; width: 0; height: 0;
-            border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 18px solid var(--accent);
-            margin-left: 6px;
-        }
-        .project-card:hover .play-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-
+        .project-card:hover .project-img { transform: scale(1.05); }
+        
         .project-meta { display: flex; justify-content: space-between; align-items: flex-end; }
+
         .project-info h3 { font-family: var(--serif); font-size: 2.2rem; margin-bottom: 10px; color: var(--text-dark); }
         .project-info p { font-size: 0.9rem; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; }
         .project-year { font-family: var(--sans); font-size: 0.9rem; font-weight: 500; color: var(--accent); }

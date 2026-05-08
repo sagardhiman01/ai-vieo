@@ -112,7 +112,7 @@ const CMS = {
                 grid.innerHTML = '';
                 this.data.portfolio.items.forEach(item => {
                     grid.innerHTML += `
-                    <div class="project-card stunner hover-target">
+                    <div class="project-card stunner hover-target" onclick="CMS.openVideo('${item.videoUrl}')">
                         <div class="project-img-container">
                             <img src="${item.image}" alt="${item.title}" class="project-img" style="${item.filterStyle}">
                             <div class="play-icon"></div>
@@ -173,6 +173,42 @@ const CMS = {
     
     updateElements(selector, content) {
         document.querySelectorAll(selector).forEach(el => el.innerHTML = content);
+    },
+
+    openVideo(url) {
+        if (!url) return;
+        
+        let modal = document.querySelector('.video-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.className = 'video-modal';
+            modal.innerHTML = `
+                <div class="close-modal" onclick="CMS.closeVideo()">&times;</div>
+                <div class="video-container">
+                    <iframe src="" allowfullscreen></iframe>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Close on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) this.closeVideo();
+            });
+        }
+        
+        const iframe = modal.querySelector('iframe');
+        iframe.src = url;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    },
+
+    closeVideo() {
+        const modal = document.querySelector('.video-modal');
+        if (modal) {
+            modal.classList.remove('active');
+            modal.querySelector('iframe').src = '';
+            document.body.style.overflow = '';
+        }
     }
 };
 

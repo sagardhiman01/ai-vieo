@@ -56,10 +56,19 @@
         "heroTitle": "Selected Works",
         "items": [
             {
+                "title": "Astra Dynamics",
+                "subtitle": "AI Cinematic / Instagram Reel",
+                "year": "2026",
+                "image": "uploads/portfolio_reel.png",
+                "videoUrl": "https://www.instagram.com/reel/DX9N7T1S1bO/embed",
+                "filterStyle": ""
+            },
+            {
                 "title": "Quantum Atmospheres",
                 "subtitle": "AI VFX / Nexus Media",
                 "year": "2025",
                 "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+                "videoUrl": "",
                 "filterStyle": ""
             },
             {
@@ -67,6 +76,7 @@
                 "subtitle": "Motion Design / Future Lab",
                 "year": "2026",
                 "image": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2600&auto=format&fit=crop",
+                "videoUrl": "",
                 "filterStyle": ""
             },
             {
@@ -74,6 +84,7 @@
                 "subtitle": "AI Cinematic / Apex Brands",
                 "year": "2025",
                 "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+                "videoUrl": "",
                 "filterStyle": "filter: hue-rotate(90deg);"
             },
             {
@@ -81,6 +92,7 @@
                 "subtitle": "3D World / Horizon Corp",
                 "year": "2026",
                 "image": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2600&auto=format&fit=crop",
+                "videoUrl": "",
                 "filterStyle": "filter: hue-rotate(180deg);"
             }
         ]

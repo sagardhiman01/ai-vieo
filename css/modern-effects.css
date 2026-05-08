@@ -69,3 +69,94 @@ body::before {
     transform: scale(1.08);
     filter: brightness(1.1) contrast(1.05);
 }
+
+/* 6. Premium Video Modal */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.video-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.video-container {
+    width: 90%;
+    max-width: 500px; /* Instagram Reels are vertical */
+    aspect-ratio: 9/16;
+    background: #000;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.video-modal.active .video-container {
+    transform: scale(1);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.close-modal {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    font-family: var(--sans);
+    z-index: 10001;
+}
+
+/* 7. Play Icon Overlay */
+.play-icon {
+    position: absolute; 
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 80px; height: 80px; 
+    background: rgba(245, 241, 230, 0.9);
+    border-radius: 50%; 
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; 
+    transition: all 0.4s ease; 
+    pointer-events: none;
+    z-index: 5;
+}
+
+.play-icon::after {
+    content: ''; width: 0; height: 0;
+    border-top: 12px solid transparent; 
+    border-bottom: 12px solid transparent; 
+    border-left: 18px solid var(--accent);
+    margin-left: 6px;
+}
+
+/* Trigger reveal on hover of parent */
+.project-card:hover .play-icon, 
+.work-item:hover .play-icon,
+.hover-target:hover .play-icon { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+
