@@ -119,8 +119,9 @@ body::before {
     top: -12%; /* Crop the header */
     left: 0;
     border: none;
-    pointer-events: none; /* Optional: prevent interaction with IG buttons */
+    pointer-events: auto; /* Allow interaction with the play button */
 }
+
 
 
 .close-modal {
