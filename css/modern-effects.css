@@ -114,13 +114,14 @@ body::before {
 
 .video-container iframe {
     width: 100%;
-    height: 125%; /* Make taller to crop top/bottom */
+    height: 170%; /* Extremely tall to push footer far down */
     position: absolute;
-    top: -12%; /* Crop the header */
+    top: -22%; /* Push header far up */
     left: 0;
     border: none;
-    pointer-events: auto; /* Allow interaction with the play button */
+    pointer-events: auto;
 }
+
 
 
 

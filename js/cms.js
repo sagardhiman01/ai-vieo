@@ -185,9 +185,10 @@ const CMS = {
             modal.innerHTML = `
                 <div class="close-modal" onclick="CMS.closeVideo()">&times;</div>
                 <div class="video-container">
-                    <iframe src="" allowfullscreen></iframe>
+                    <iframe src="" scrolling="no" frameborder="0" allowfullscreen></iframe>
                 </div>
             `;
+
             document.body.appendChild(modal);
             
             // Close on background click
