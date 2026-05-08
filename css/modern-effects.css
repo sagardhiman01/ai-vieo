@@ -114,9 +114,9 @@ body::before {
 
 .video-container iframe {
     width: 100%;
-    height: 220%; /* Triple height to ensure footer is gone */
+    height: 160%; /* Extra height so footer goes below container */
     position: absolute;
-    top: -40%; /* Aggressive top offset to hide header */
+    top: 0; /* Start from top - video shows fully, footer gets cut off */
     left: 0;
     border: none;
     pointer-events: auto;
