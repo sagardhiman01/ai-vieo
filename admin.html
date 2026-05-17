@@ -176,8 +176,8 @@
                                     <div class="form-group"><label>Category / Client (Subtitle)</label><input type="text" x-model="item.subtitle"></div>
                                     <div class="form-group"><label>Year</label><input type="text" x-model="item.year"></div>
                                     <div class="form-group"><label>CSS Image Filter (Optional ex: filter: hue-rotate(90deg);)</label><input type="text" x-model="item.filterStyle"></div>
-                                    <div class="form-group full">
-                                        <label>Portfolio Image</label>
+                                    <div class="form-group">
+                                        <label>Portfolio Image (Thumbnail)</label>
                                         <template x-if="item.image">
                                             <div style="margin-top: 10px; display: flex; align-items: flex-end; gap: 15px;">
                                                 <img :src="item.image" alt="Preview" style="max-height: 120px; border-radius: 6px; border: 1px solid var(--border);">
@@ -190,10 +190,25 @@
                                             </div>
                                         </template>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Portfolio Video (MP4, WebM, or YouTube/Insta Embed URL)</label>
+                                        <input type="text" x-model="item.videoUrl" placeholder="Paste link or upload video below">
+                                        <template x-if="item.videoUrl">
+                                            <div style="margin-top: 10px; display: flex; align-items: center; gap: 15px;">
+                                                <span style="font-size: 0.8rem; color: var(--text-light); word-break: break-all;" x-text="'Current Video: ' + item.videoUrl"></span>
+                                                <button type="button" class="btn-delete" @click="item.videoUrl = ''">Clear Video</button>
+                                            </div>
+                                        </template>
+                                        <template x-if="!item.videoUrl">
+                                            <div style="margin-top: 10px;">
+                                                <input type="file" accept="video/*" @change="uploadVideo($event, item)" style="padding:0; border:none; background:transparent;">
+                                            </div>
+                                        </template>
+                                    </div>
                                 </div>
                             </div>
                         </template>
-                        <button class="btn-add" @click="data.portfolio.items.push({title:'Project', subtitle:'', year:'', image:'', filterStyle:''})">+ Add New Project</button>
+                        <button class="btn-add" @click="data.portfolio.items.push({title:'Project', subtitle:'', year:'', image:'', filterStyle:'', videoUrl:''})">+ Add New Project</button>
                     </div>
                 </div>
 
@@ -317,6 +332,34 @@
                         if (result.success) {
                             item.image = result.url;
                             this.showNotification('Image uploaded successfully!', 'success');
+                            this.saveData(); // Auto save after upload
+                        } else {
+                            this.showNotification('Upload failed: ' + result.error, 'error');
+                        }
+                    })
+                    .catch(err => {
+                        this.showNotification('Upload error', 'error');
+                    });
+                },
+
+                uploadVideo(event, item) {
+                    const file = event.target.files[0];
+                    if (!file) return;
+
+                    const formData = new FormData();
+                    formData.append('video', file); // Multer expects 'video' field name from server.js
+
+                    this.showNotification('Uploading video...', 'success');
+
+                    fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.success) {
+                            item.videoUrl = result.url;
+                            this.showNotification('Video uploaded successfully!', 'success');
                             this.saveData(); // Auto save after upload
                         } else {
                             this.showNotification('Upload failed: ' + result.error, 'error');

@@ -111,10 +111,18 @@ const CMS = {
             if (grid) {
                 grid.innerHTML = '';
                 this.data.portfolio.items.forEach(item => {
+                    let imgUrl = item.image || '';
+                    if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('/')) {
+                        imgUrl = '/' + imgUrl;
+                    }
+                    let videoUrl = item.videoUrl || '';
+                    if (videoUrl && !videoUrl.startsWith('http') && !videoUrl.startsWith('/')) {
+                        videoUrl = '/' + videoUrl;
+                    }
                     grid.innerHTML += `
-                    <div class="project-card stunner hover-target" onclick="CMS.openVideo('${item.videoUrl}')">
+                    <div class="project-card stunner hover-target" onclick="CMS.openVideo('${videoUrl}')">
                         <div class="project-img-container">
-                            <img src="${item.image}" alt="${item.title}" class="project-img" style="${item.filterStyle}">
+                            <img src="${imgUrl}" alt="${item.title}" class="project-img" style="${item.filterStyle}">
                             <div class="play-icon"></div>
                         </div>
                         <div class="project-meta">
@@ -123,6 +131,36 @@ const CMS = {
                                 <p>${item.subtitle}</p>
                             </div>
                             <div class="project-year">${item.year}</div>
+                        </div>
+                    </div>`;
+                });
+            }
+        }
+
+        // --- HOME PAGE LATEST CAMPAIGNS (.work-items) ---
+        if (document.querySelector('.work-items')) {
+            const workList = document.querySelector('.work-items');
+            if (workList) {
+                workList.innerHTML = '';
+                this.data.portfolio.items.forEach(item => {
+                    let imgUrl = item.image || '';
+                    if (imgUrl && !imgUrl.startsWith('http') && !imgUrl.startsWith('/')) {
+                        imgUrl = '/' + imgUrl;
+                    }
+                    let videoUrl = item.videoUrl || '';
+                    if (videoUrl && !videoUrl.startsWith('http') && !videoUrl.startsWith('/')) {
+                        videoUrl = '/' + videoUrl;
+                    }
+                    workList.innerHTML += `
+                    <div class="work-item fade-up" onclick="CMS.openVideo('${videoUrl}')" style="opacity:1; transform:translateY(0);">
+                        <div class="work-img-wrapper hover-target">
+                            <img src="${imgUrl}" alt="${item.title}" class="work-img parallax-img" style="${item.filterStyle}">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="work-info">
+                            <h3>${item.title}</h3>
+                            <p>${item.subtitle} (${item.year})</p>
+                            <a href="javascript:void(0)" class="btn-link">Watch Campaign</a>
                         </div>
                     </div>`;
                 });
@@ -182,13 +220,6 @@ const CMS = {
         if (!modal) {
             modal = document.createElement('div');
             modal.className = 'video-modal';
-            modal.innerHTML = `
-                <div class="close-modal" onclick="CMS.closeVideo()">&times;</div>
-                <div class="video-container">
-                    <iframe src="" scrolling="no" frameborder="0" allowfullscreen></iframe>
-                </div>
-            `;
-
             document.body.appendChild(modal);
             
             // Close on background click
@@ -197,8 +228,22 @@ const CMS = {
             });
         }
         
-        const iframe = modal.querySelector('iframe');
-        iframe.src = url;
+        let isDirectVideo = false;
+        const lowerUrl = url.toLowerCase();
+        if (lowerUrl.endsWith('.mp4') || lowerUrl.endsWith('.webm') || lowerUrl.endsWith('.ogg') || lowerUrl.endsWith('.mov') || lowerUrl.includes('/uploads/')) {
+            isDirectVideo = true;
+        }
+
+        modal.innerHTML = `
+            <div class="close-modal" onclick="CMS.closeVideo()">&times;</div>
+            <div class="video-container">
+                ${isDirectVideo 
+                    ? `<video src="${url}" controls autoplay playsinline style="width:100%; height:100%; object-fit:contain; background:#000; border:none; outline:none;"></video>`
+                    : `<iframe src="${url}" scrolling="no" frameborder="0" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>`
+                }
+            </div>
+        `;
+        
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     },
@@ -207,7 +252,7 @@ const CMS = {
         const modal = document.querySelector('.video-modal');
         if (modal) {
             modal.classList.remove('active');
-            modal.querySelector('iframe').src = '';
+            modal.innerHTML = ''; // Clear content to stop any playing audio/video instantly
             document.body.style.overflow = '';
         }
     }

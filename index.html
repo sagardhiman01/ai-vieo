@@ -444,10 +444,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                animation: logoSlide 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-                animation-delay: 1.5s;
                 opacity: 0;
-                animation: logoReveal 1s ease forwards, logoSlide 1s cubic-bezier(0.77, 0, 0.175, 1) forwards 1.5s;
+                animation: logoReveal 1s ease forwards, logoSlideDesktop 1s cubic-bezier(0.77, 0, 0.175, 1) forwards 1.5s;
             }
             .anim-logo-box img {
                 width: 400px; /* Ultra Massive */
@@ -491,23 +489,34 @@
                 from { opacity: 0; transform: scale(0.6); }
                 to { opacity: 1; transform: scale(1); }
             }
-            @keyframes logoSlide {
+            @keyframes logoSlideDesktop {
                 from { transform: translateX(0); }
                 to { transform: translateX(-420px); } /* Compacted but large */
+            }
+            @keyframes logoSlideTablet {
+                from { transform: translateX(0); }
+                to { transform: translateX(-300px); }
+            }
+            @keyframes logoSlideMobile {
+                from { transform: translateY(0); }
+                to { transform: translateY(-120px); }
             }
             @keyframes textFadeIn {
                 from { opacity: 0; transform: translateX(60px); }
                 to { opacity: 1; transform: translateX(0); }
             }
+            @keyframes textFadeInMobile {
+                from { opacity: 0; transform: translate(-50%, 40px); }
+                to { opacity: 1; transform: translate(-50%, 0); }
+            }
 
             /* TABLET OPTIMIZATION */
             @media (max-width: 1024px) {
                 .logo-anim-wrapper { min-height: 300px; }
-                .anim-logo-box img { width: 280px; }
-                @keyframes logoSlide {
-                    from { transform: translateX(0); }
-                    to { transform: translateX(-300px); }
+                .anim-logo-box {
+                    animation: logoReveal 1s ease forwards, logoSlideTablet 1s cubic-bezier(0.77, 0, 0.175, 1) forwards 1.5s;
                 }
+                .anim-logo-box img { width: 280px; }
                 .anim-text-box { left: calc(50% + 50px); }
                 .anim-text-box h2 { font-size: 4.5rem; }
                 .anim-text-box p { font-size: 1.1rem; }
@@ -516,18 +525,19 @@
             /* MOBILE OPTIMIZATION */
             @media (max-width: 768px) {
                 .logo-anim-wrapper { flex-direction: column; min-height: 600px; margin-top: 0; }
-                .anim-logo-box img { width: 220px; }
-                @keyframes logoSlide {
-                    from { transform: translateY(0); }
-                    to { transform: translateY(-150px); }
+                .anim-logo-box {
+                    animation: logoReveal 1s ease forwards, logoSlideMobile 1s cubic-bezier(0.77, 0, 0.175, 1) forwards 1.5s;
                 }
+                .anim-logo-box img { width: 220px; }
                 .anim-text-box { 
                     left: 50%; 
-                    transform: translateX(-50%); 
+                    transform: translate(-50%, 40px); 
                     text-align: center; 
                     padding-left: 0; 
                     margin-top: 250px; 
                     width: 95%;
+                    animation: textFadeInMobile 0.8s ease forwards;
+                    animation-delay: 1.8s;
                 }
                 .anim-text-box h2 { font-size: 3.5rem; border-left: none; border-top: 4px solid var(--accent); padding-left: 0; padding-top: 25px; }
                 .anim-text-box p { font-size: 1rem; padding-left: 0; margin-top: 15px; }
