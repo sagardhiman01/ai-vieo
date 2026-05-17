@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ 
     storage: storage,
-    limits: { fileSize: 100 * 1024 * 1024 } // 100MB limit
+    limits: { fileSize: 500 * 1024 * 1024 } // 500MB limit
 });
 
 // Serve static files
@@ -68,17 +68,29 @@ app.post('/api/save', async (req, res) => {
 });
 
 // API: Upload file (image or video)
-app.post('/api/upload', upload.single('video'), async (req, res) => {
-    if (!req.file) return res.status(400).json({ success: false, error: 'No file uploaded' });
-    
-    const relativePath = `/uploads/${req.file.filename}`;
-    
-    // Attempt GitHub sync in background - won't fail the upload
-    syncWithGithub(`Upload file: ${req.file.filename}`).catch(err => {
-        console.warn('GitHub sync skipped (git not configured):', err.message);
+app.post('/api/upload', (req, res) => {
+    upload.single('video')(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            console.error('Multer Upload Error:', err);
+            return res.status(400).json({ success: false, error: `Upload error: ${err.message}` });
+        } else if (err) {
+            console.error('Unknown Upload Error:', err);
+            return res.status(500).json({ success: false, error: `Server error: ${err.message}` });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ success: false, error: 'No file uploaded' });
+        }
+
+        const relativePath = `/uploads/${req.file.filename}`;
+
+        // Attempt GitHub sync in background - won't fail the upload
+        syncWithGithub(`Upload file: ${req.file.filename}`).catch(err => {
+            console.warn('GitHub sync skipped (git not configured):', err.message);
+        });
+
+        res.json({ success: true, url: relativePath });
     });
-    
-    res.json({ success: true, url: relativePath });
 });
 
 async function syncWithGithub(message) {

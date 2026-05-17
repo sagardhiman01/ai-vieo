@@ -40,7 +40,7 @@ files.forEach(file => {
     }
     
     // Fix index.html JS bug
-    if (file === 'index.html') {
+    if (file === 'index.html' && !content.includes("if(title) {")) {
         content = content.replace(
             `const title = document.getElementById('split-text');\n        const text = title.innerText;`,
             `const title = document.getElementById('split-text');\n        if(title) {\n        const text = title.innerText;`

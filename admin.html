@@ -178,32 +178,28 @@
                                     <div class="form-group"><label>CSS Image Filter (Optional ex: filter: hue-rotate(90deg);)</label><input type="text" x-model="item.filterStyle"></div>
                                     <div class="form-group">
                                         <label>Portfolio Image (Thumbnail)</label>
-                                        <template x-if="item.image">
-                                            <div style="margin-top: 10px; display: flex; align-items: flex-end; gap: 15px;">
-                                                <img :src="item.image" alt="Preview" style="max-height: 120px; border-radius: 6px; border: 1px solid var(--border);">
-                                                <button type="button" class="btn-delete" @click="item.image = ''">Delete Image</button>
-                                            </div>
-                                        </template>
-                                        <template x-if="!item.image">
-                                            <div>
-                                                <input type="file" accept="image/*" @change="uploadImage($event, item)" style="padding:0; border:none; background:transparent;">
-                                            </div>
-                                        </template>
+                                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                                            <input type="file" accept="image/*" @change="uploadImage($event, item)" style="padding: 0; border: none; background: transparent;">
+                                            <template x-if="item.image">
+                                                <div style="display: flex; align-items: flex-end; gap: 15px;">
+                                                    <img :src="item.image" alt="Preview" style="max-height: 80px; border-radius: 6px; border: 1px solid var(--border);">
+                                                    <button type="button" class="btn-delete" @click="item.image = ''">Delete Image</button>
+                                                </div>
+                                            </template>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Portfolio Video (MP4, WebM, or YouTube/Insta Embed URL)</label>
-                                        <input type="text" x-model="item.videoUrl" placeholder="Paste link or upload video below">
-                                        <template x-if="item.videoUrl">
-                                            <div style="margin-top: 10px; display: flex; align-items: center; gap: 15px;">
-                                                <span style="font-size: 0.8rem; color: var(--text-light); word-break: break-all;" x-text="'Current Video: ' + item.videoUrl"></span>
-                                                <button type="button" class="btn-delete" @click="item.videoUrl = ''">Clear Video</button>
-                                            </div>
-                                        </template>
-                                        <template x-if="!item.videoUrl">
-                                            <div style="margin-top: 10px;">
-                                                <input type="file" accept="video/*" @change="uploadVideo($event, item)" style="padding:0; border:none; background:transparent;">
-                                            </div>
-                                        </template>
+                                        <input type="text" x-model="item.videoUrl" placeholder="Paste link or upload video below" style="margin-bottom: 8px;">
+                                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                                            <input type="file" accept="video/*" @change="uploadVideo($event, item)" style="padding: 0; border: none; background: transparent;">
+                                            <template x-if="item.videoUrl">
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <span style="font-size: 0.8rem; color: var(--text-light); word-break: break-all;" x-text="'Current Video: ' + item.videoUrl"></span>
+                                                    <button type="button" class="btn-delete" @click="item.videoUrl = ''">Clear Video</button>
+                                                </div>
+                                            </template>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
