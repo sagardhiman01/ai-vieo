@@ -94,6 +94,12 @@ app.post('/api/upload', (req, res) => {
 });
 
 async function syncWithGithub(message) {
+    // Only run git sync if running on Render / production
+    if (process.env.NODE_ENV !== 'production' && process.env.RENDER !== 'true') {
+        console.log('Local environment detected. Skipping background GitHub sync/push.');
+        return;
+    }
+
     const token = process.env.GITHUB_TOKEN;
     if (token) {
         const remote = `https://${token}@github.com/sagardhiman01/ai-vieo.git`;
